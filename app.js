@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//connect to DB
 mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -34,8 +35,8 @@ mongoose.connect(process.env.DB_URL, {
 });
 
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use(indexRouter, usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
