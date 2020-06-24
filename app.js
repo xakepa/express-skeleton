@@ -34,8 +34,8 @@ mongoose.connect(process.env.DB_URL, {
 });
 
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use(indexRouter, usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
